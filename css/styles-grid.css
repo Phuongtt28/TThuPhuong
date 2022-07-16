@@ -1,0 +1,461 @@
+/*Thêm thuộc tính box-sizing: border-box để web có thể responsive => phần này thi có hỏi*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  /*thêm vào cả padding = 0 cho body bên cạnh margin = 0*/
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/*Grid template - xây dựng bộ khung bằng Grid*/
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 33.33%);
+  grid-template-rows: 500px auto auto auto auto auto 2fr;
+  justify-items: center;
+  /* gap: 10px; */
+  grid-template-areas:
+    "banner banner banner"
+    "navbar navbar navbar"
+    "content content content"
+    "col col col"
+    "cert cert cert"
+    "project project project"
+    "footer footer footer";
+}
+
+.banner {
+  grid-area: banner;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navbar {
+  grid-area: navbar;
+  width: 100%;
+  /* box-shadow: 5px 0px 5px 5px rgba(255, 255, 255, 0.1); */
+}
+
+.content {
+  grid-area: content;
+}
+
+.col {
+  grid-area: col;
+  width: 80%;
+  margin-bottom: 50px;
+}
+
+.cert {
+  grid-area: cert;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.project {
+  grid-area: project;
+  width: 80%;
+  margin: 50px 0;
+}
+
+.footer {
+  grid-area: footer;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+}
+
+/*CSS for banner*/
+.banner img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.banner-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 500px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.banner .centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 500px;
+  /* border-radius: 15px; */
+  transition-duration: 0.5s;
+}
+
+.banner .centered:hover {
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+.banner .name {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 400px;
+  height: 200px;
+}
+
+.grid-button {
+  display: none;
+  animation: fade-out 1s;
+}
+
+.banner .centered:hover .grid-button {
+  display: grid;
+  grid-template-columns: repeat(4, 2fr);
+  justify-content: center;
+  padding-top: 1rem;
+  animation: fade-in 1s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.grid-button a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.grid-button > div {
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 15px;
+}
+
+.grid-button > div:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/*CSS for topnav*/
+.topnav {
+  text-align: center;
+  position: relative;
+}
+
+.topnav i {
+  color: #199cdb;
+}
+
+.topnav .topnav-grid {
+  display: grid;
+  grid-template-columns: 150px 150px 300px 150px 150px;
+  justify-content: center;
+  box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.topnav .topnav-grid > a {
+  text-decoration: none;
+  color: #000;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 15px 0;
+}
+
+.topnav .topnav-grid > a:last-child {
+  border-right: none;
+}
+
+.topnav .topnav-grid > a > h3 {
+  margin-bottom: 0;
+}
+
+.topnav .topnav-grid > .nav-center {
+  padding: 0;
+}
+
+.avatar {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 9999;
+}
+
+.avatar > img {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  box-shadow: 0px 0px 5px 2px grey;
+  transition-duration: 0.5s;
+}
+
+.avatar > img:hover {
+  transform: scale(1.2);
+}
+/*CSS for content*/
+.grid-content {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+.grid-content .content-title {
+  font-size: 150%;
+  font-weight: 600;
+}
+
+.grid-content .grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.nghe-nghiep {
+  /* padding-left: 40%; */
+  padding: 1rem 1rem 1rem 10rem;
+  background-color: rgba(0, 0, 0, 0.01);
+  padding: 50px;
+  padding-left: 40%;
+}
+
+.ca-nhan {
+  text-align: left !important;
+  padding: 1rem 1rem 1rem 1rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 50px;
+}
+
+.ca-nhan table td {
+  color: grey;
+}
+
+.grid-container-icon {
+  display: grid;
+  grid-template-columns: repeat(4, 64px);
+  margin-top: 10px;
+}
+.grid-item-icon {
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  font-size: 20px;
+  text-align: left;
+  padding: 15px 0;
+}
+
+.personal-title {
+  font-weight: bold;
+  width: 100px;
+  color: #000 !important;
+}
+
+/*CSS for card*/
+.grid-col {
+  display: grid;
+  /* width: 80%; */
+  margin: auto;
+  padding-top: 15px;
+  grid-template-columns: repeat(3, 33.33%);
+  gap: 10px;
+}
+
+/*CSS for card*/
+.card {
+  display: grid;
+  grid-template-columns: 75% 25%;
+  grid-template-areas:
+    "card-text card-icon"
+    "card-body card-body";
+  border: 1px solid gray;
+  margin-top: 10px;
+}
+
+.card-text {
+  grid-area: card-text;
+  padding: 1rem 3rem 1rem;
+}
+
+.card-icon {
+  grid-area: card-icon;
+  padding: 1rem;
+}
+
+.card-body {
+  grid-area: card-body;
+  text-align: justify;
+  padding: 15px;
+}
+
+.grid-sothich {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  gap: 5px;
+}
+
+.sothich i {
+  background-color: aqua;
+  border-radius: 50%;
+  padding: 15px;
+}
+
+.skill-active {
+  background: #199cdb;
+  display: inline-block;
+  height: 2px;
+  margin-right: 10px;
+  width: 45px;
+}
+
+.skill-inactive {
+  background: gray;
+  display: inline-block;
+  height: 2px;
+  margin-right: 10px;
+  width: 45px;
+}
+
+/*CSS for certificates*/
+.cert-wrapper {
+  max-width: 80%;
+  margin: auto;
+  padding: 25px 0;
+}
+
+.grid-cert {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+.grid-cert .cert-item {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  padding: 20px 10px;
+}
+
+.grid-cert > .bottom-border {
+  border-bottom: 1px solid #d6c08d;
+}
+
+.grid-cert .cert-img > img {
+  max-width: 100%;
+  height: auto;
+}
+
+.grid-cert > div:nth-child(even) img {
+  padding: 0 10px;
+  border-left: 1px solid #d6c08d;
+}
+
+.grid-cert .cert-description {
+  padding: 0 15px;
+}
+
+/*CSS for Project*/
+.grid-project {
+  display: grid;
+  grid-template-columns: repeat(3, 33.33%);
+  gap: 10px;
+}
+
+.project-item {
+  border: 1px solid rgb(161, 159, 159);
+}
+
+.card-project-img > img {
+  max-width: 100%;
+  height: auto;
+}
+
+.card-project-title,
+.card-project-date {
+  padding: 0 10px;
+  border: 1px solid gray;
+}
+
+.card-project-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.card-project-date span {
+  margin: 0 15px;
+}
+
+.card-project-date span > i {
+  margin: 0 5px;
+}
+
+.bage {
+  border-radius: 15px;
+  background-color: #199cdb;
+  padding: 5px 10px;
+  color: #fff;
+}
+
+.project-table,
+.project-table tr {
+  border: 1px solid gray;
+}
+
+.project-table td {
+  padding: 15px 5px;
+}
+
+.project-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tbl-title {
+  width: 25%;
+}
+
+.tbl-description {
+  width: 75%;
+}
+
+/*CSS for Footer*/
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  justify-content: center;
+  gap: 20px;
+  padding: 50px;
+  width: 60%;
+  margin: auto;
+}
+
+.footer-item > a {
+  text-decoration: none;
+  color: gray;
+  font-size: 20px;
+}
+
+.footer-item > a > i {
+  color: #199cdb;
+}
